@@ -1,29 +1,78 @@
 <!-- one Way Data Binding -->
-<p style="font-family: 'Courier New', Courier, monospace">**One-Way Data-Binding**</p>
+<p style="font-family: 'Courier New', Courier, monospace">
+  **One-Way Data-Binding**
+</p>
 <input type="text" class="form-control" (input)="onUpdateServerName($event)" />
 
 <!-- Two Way Data-Binding -->
-<p style="font-family: 'Courier New', Courier, monospace">**Two-Way Data-Binding**</p>
+<p style="font-family: 'Courier New', Courier, monospace">
+  **Two-Way Data-Binding**
+</p>
 <input type="text" class="form-control" [(ngModel)]="servername" />
-<p style="text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{ servername }}</p>
-
-<!-- [(ngModel)] -->
-<p style="font-family: 'Courier New', Courier, monospace">**ngModel Data-Binding**</p>
-<input type="text" class="form-control" [(ngModel)]="name" />
-<p style="text-align: center;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">&nbsp;{{ name }}
+<p
+  style="
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  "
+>
+  {{ servername }}
 </p>
 
-<p style="font-family: 'Courier New', Courier, monospace">**Disabled & Enable Button**</p>
+<!-- [(ngModel)] -->
+<p style="font-family: 'Courier New', Courier, monospace">
+  **ngModel Data-Binding**
+</p>
+<input type="text" class="form-control" [(ngModel)]="name" />
+<p
+  style="
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  "
+>
+  &nbsp;{{ name }}
+</p>
+
+<!-- Enable - Disable Button -->
+<p style="font-family: 'Courier New', Courier, monospace">
+  **Disabled & Enable Button**
+</p>
 <button class="btn btn-primary" [disabled]="!allownewuser">Submit</button
 ><br /><br />
 
-<p style="font-family: 'Courier New', Courier, monospace">**Clickable-Button**</p>
+<!-- DOM -->
+<p style="font-family: 'Courier New', Courier, monospace">
+  **Clickable-Button**
+</p>
 <button class="btn btn-primary" (click)="onCreateServer()">Server</button>
 <p style="text-align: center">{{ serverCreation }}</p>
 
+<!-- If Else -->
 <p style="font-family: 'Courier New', Courier, monospace">**ngIf**</p>
-<input type="text" class="form-control" [(ngModel)] = "serverName"><br>
-<button class="btn btn-primary" (click)="onCreateServer2()">Add-Server</button><br>
-<p *ngIf="servercreated"  style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{ serverstatus }}&nbsp; and server Name is {{serverName}}</p>
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="serverName"
+  placeholder="Enter Server Name"
+/><br />
+<button class="btn btn-primary" (click)="onCreateServer2()">Add-Server</button
+><br />
+<p
+  *ngIf="servercreated; else noServer"
+  style="
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  "
+>
+  {{ serverstatus }}&nbsp; and server Name is {{ serverName }}
+</p>
+
+<!-- ng Else Components -->
+<ng-template #noServer> <p>No Server Was Created !!</p> </ng-template>
 
 <p [innerText]="allownewuser"></p>
+
+<!-- For Loops -->
+<button class="btn btn-primary" (click)="onCreateServer3()">Add-Server</button
+><br />
+<app-servers *ngFor="let server of servers"></app-servers>

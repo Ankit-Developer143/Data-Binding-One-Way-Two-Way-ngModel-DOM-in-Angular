@@ -38,4 +38,12 @@ export class ServerComponent implements OnInit {
     this.servercreated = true;
     this.serverstatus = 'Server Created';
   }
+
+  servers = ['server1', 'server2'];
+
+  //for Loops
+  onCreateServer3() {
+    this.servers.push(this.serverName);
+
+  }
 }
